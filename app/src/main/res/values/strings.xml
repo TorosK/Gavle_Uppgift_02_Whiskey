@@ -36,6 +36,7 @@
         <item >Boards of Canada</item>
     </string-array>
     <string-array name="sizes">
+        <item >Select size</item>
         <item >4 cl</item>
         <item >6 cl</item>
         <item >8 cl</item>
