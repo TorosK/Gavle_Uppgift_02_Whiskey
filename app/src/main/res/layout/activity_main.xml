@@ -1,48 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
+    <!-- Whisky Spinner at the top -->
     <Spinner
         android:id="@+id/whiskySpinner"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_alignParentTop="true"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <Spinner
-        android:id="@+id/artistSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/whiskySpinner"/>
 
+    <!-- Size Spinner below Whiskey Spinner -->
     <Spinner
         android:id="@+id/sizeSpinner"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/artistSpinner"/>
+        app:layout_constraintTop_toBottomOf="@id/artistSpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Artist Spinner below Size Spinner -->
+    <Spinner
+        android:id="@+id/artistSpinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/whiskySpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Image of the Whisky occupying left half of the bottom -->
     <ImageView
         android:id="@+id/whiskyImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/sizeSpinner"/>
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/artistImage"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintVertical_weight="1"
+        android:src="@drawable/default_whisky_image" />
 
+    <!-- Image of the Artist occupying right half of the bottom -->
     <ImageView
         android:id="@+id/artistImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/whiskyImage"/>
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/whiskyImage"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintVertical_weight="1"
+        android:src="@drawable/default_artist_image" />
 
+    <!-- Text for the price information -->
     <TextView
         android:id="@+id/priceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/artistImage"/>
+        app:layout_constraintBottom_toTopOf="@id/whiskyImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="18sp" />
 
+    <!-- Text for the info (Whisky, Artist, Size) -->
     <TextView
         android:id="@+id/infoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/priceText"/>
-</RelativeLayout>
+        app:layout_constraintBottom_toTopOf="@id/priceText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="18sp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

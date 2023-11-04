@@ -2,8 +2,8 @@
     <string name="app_name">FavouriteWhisky</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">Favorite Whisky</string>
-    <string name="info_text_format">Whisky: %1$s, Artist: %2$s, Size: %3$s</string>
-    <string name="price_text_format">Price: %1$s</string>
+    <string name="info_text_format">Your choice is %1$s. Price = %2$.2f kr/cl</string>
+    <string name="size_text_format">Your choice is %1$s\nTotal sum is %2$.2f kr</string>
     <string name="printText">Please choose your favourite whisky.</string>
     <string-array name="whiskies">
         <item >Select whisky</item>
@@ -17,18 +17,19 @@
         <item >Caol Ila 18</item>
         <item >Auchentoshan</item>
     </string-array>
-    <string-array name="prices">
-        <item>0 kr</item> <!-- Placeholder för "Välj whisky" -->
-        <item>499 kr</item> <!-- Pris för Lagavulin -->
-        <item>399 kr</item> <!-- Pris för Oban -->
-        <item>449 kr</item> <!-- Pris för Talisker -->
-        <item>419 kr</item> <!-- Pris för Ardbeg -->
-        <item>379 kr</item> <!-- Pris för Glenlivet -->
-        <item>459 kr</item> <!-- Pris för Bunnahabhain -->
-        <item>499 kr</item> <!-- Pris för Laphroaig -->
-        <item>549 kr</item> <!-- Pris för Caol Ila 18 -->
-        <item>329 kr</item> <!-- Pris för Auchentoshan -->
-    </string-array>
+    <!-- Price per cl for each whisky -->
+    <integer-array name="prices_per_cl">
+        <item>0</item>    <!-- Placeholder for "Select whisky" -->
+        <item>125</item>  <!-- Price per cl for Lagavulin -->
+        <item>37</item>   <!-- Price per cl for Oban -->
+        <item>112</item>  <!-- Price per cl for Talisker -->
+        <item>104</item>  <!-- Price per cl for Ardbeg -->
+        <item>94</item>   <!-- Price per cl for Glenlivet -->
+        <item>114</item>  <!-- Price per cl for Bunnahabhain -->
+        <item>124</item>  <!-- Price per cl for Laphroaig -->
+        <item>137</item>  <!-- Price per cl for Caol Ila 18 -->
+        <item>82</item>   <!-- Price per cl for Auchentoshan -->
+    </integer-array>
     <string-array name="artists">
         <item >Select artist</item>
         <item >MachineDrum</item>
