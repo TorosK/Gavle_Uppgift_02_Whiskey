@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:app="http://schemas.android.com/apk/res-auto"
-
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -38,11 +38,11 @@
         android:id="@+id/whiskyImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintWidth_percent="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/artistImage"
-        app:layout_constraintDimensionRatio="H,1:1"
-        app:layout_constraintVertical_weight="1"
         android:src="@drawable/default_whisky_image" />
 
     <!-- Image of the Artist occupying right half of the bottom -->
@@ -50,11 +50,11 @@
         android:id="@+id/artistImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintWidth_percent="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/whiskyImage"
-        app:layout_constraintDimensionRatio="H,1:1"
-        app:layout_constraintVertical_weight="1"
         android:src="@drawable/default_artist_image" />
 
     <!-- Text for the price information -->

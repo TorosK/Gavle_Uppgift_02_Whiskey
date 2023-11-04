@@ -31,10 +31,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var artistSpinner: Spinner
     private lateinit var sizeSpinner: Spinner
 
-    private val pricesPerCl by lazy { resources.getIntArray(R.array.prices_per_cl) }
-    private val priceTextFormat by lazy { resources.getString(R.string.price_text_format) }
+    private val pricesPerCl by lazy { resources.getIntArray(R.array.prices) }
+    private val priceTextFormat by lazy { resources.getString(R.string.info_text_format) }
     private val sizeTextFormat by lazy { resources.getString(R.string.size_text_format) }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

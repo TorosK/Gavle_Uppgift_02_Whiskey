@@ -18,7 +18,7 @@
         <item >Auchentoshan</item>
     </string-array>
     <!-- Price per cl for each whisky -->
-    <integer-array name="prices_per_cl">
+    <integer-array name="prices">
         <item>0</item>    <!-- Placeholder for "Select whisky" -->
         <item>125</item>  <!-- Price per cl for Lagavulin -->
         <item>37</item>   <!-- Price per cl for Oban -->
