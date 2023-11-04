@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">FavouriteWhisky</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Favorite Whisky</string>
+    <string name="printText">Please choose your favourite whisky.</string>
+    <string-array name="whiskies">
+        <item >Select whisky</item>
+        <item >Lagavulin</item>
+        <item >Oban</item>
+        <item >Talisker</item>
+        <item >Ardbeg</item>
+        <item >Glenlivet</item>
+        <item >Bunnahabhain</item>
+        <item >Laphroaig</item>
+        <item >Caol Ila 18</item>
+        <item >Auchentoshan</item>
+    </string-array>
+</resources>
