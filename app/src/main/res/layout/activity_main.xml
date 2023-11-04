@@ -1,23 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
+
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="fill_parent"
+        android:id="@+id/whiskySpinner"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:background="?android:attr/colorPressedHighlight"
-        android:popupBackground="?android:attr/colorMultiSelectHighlight" />
-    <TextView
-        android:id="@+id/textView"
+        android:layout_alignParentTop="true"/>
+
+    <Spinner
+        android:id="@+id/artistSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/whiskySpinner"/>
+
+    <Spinner
+        android:id="@+id/sizeSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/artistSpinner"/>
+
+    <ImageView
+        android:id="@+id/whiskyImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/spinner"
-        android:layout_alignParentLeft="true"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_below="@id/sizeSpinner"/>
+
+    <ImageView
+        android:id="@+id/artistImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/whiskyImage"/>
+
+    <TextView
+        android:id="@+id/priceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/artistImage"/>
+
+    <TextView
+        android:id="@+id/infoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/priceText"/>
 </RelativeLayout>
