@@ -12,23 +12,42 @@
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Size Spinner below Whiskey Spinner -->
+    <!-- TextView for selected whisky and price -->
+    <TextView
+        android:id="@+id/selectedWhiskyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_whisky_prompt"
+        app:layout_constraintTop_toBottomOf="@id/whiskySpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Size Spinner below the Whisky TextView -->
     <Spinner
         android:id="@+id/sizeSpinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/whiskySpinner"
+        app:layout_constraintTop_toBottomOf="@id/selectedWhiskyTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- TextView for selected size and total sum -->
+    <TextView
+        android:id="@+id/selectedSizeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/sizeSpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Artist Spinner below Size Spinner -->
     <Spinner
         android:id="@+id/artistSpinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/sizeSpinner"
+        app:layout_constraintTop_toBottomOf="@id/selectedSizeTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -55,24 +74,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/whiskyImage"
         android:src="@drawable/default_artist_image" />
-
-    <!-- Text for the price information -->
-    <TextView
-        android:id="@+id/priceText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/whiskyImage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="18sp" />
-
-    <!-- Text for the info (Whisky, Artist, Size) -->
-    <TextView
-        android:id="@+id/infoText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/priceText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="18sp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

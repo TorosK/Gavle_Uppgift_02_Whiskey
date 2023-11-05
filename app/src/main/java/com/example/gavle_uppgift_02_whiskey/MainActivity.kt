@@ -1,5 +1,3 @@
-// MainActivity.kt
-
 package com.example.gavle_uppgift_02_whiskey
 
 import android.os.Bundle
@@ -15,113 +13,117 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var whiskyImage: ImageView
     private lateinit var artistImage: ImageView
-    private lateinit var priceText: TextView
-    private lateinit var infoText: TextView
-
-    private val whiskies by lazy { resources.getStringArray(R.array.whiskies) }
-    private val prices by lazy { resources.getStringArray(R.array.prices) }
-    private val artists by lazy { resources.getStringArray(R.array.artists) }
-    private val sizes by lazy { resources.getStringArray(R.array.sizes) }
-
-    private var selectedWhisky = ""
-    private var selectedArtist = ""
-    private var selectedSize = ""
+    private lateinit var selectedWhiskyTextView: TextView
+    private lateinit var selectedSizeTextView: TextView
 
     private lateinit var whiskySpinner: Spinner
-    private lateinit var artistSpinner: Spinner
     private lateinit var sizeSpinner: Spinner
+    private lateinit var artistSpinner: Spinner
 
+    private val whiskies by lazy { resources.getStringArray(R.array.whiskies) }
+    private val sizes by lazy { resources.getStringArray(R.array.sizes) }
+    private val artists by lazy { resources.getStringArray(R.array.artists) }
     private val pricesPerCl by lazy { resources.getIntArray(R.array.prices) }
-    private val priceTextFormat by lazy { resources.getString(R.string.info_text_format) }
-    private val sizeTextFormat by lazy { resources.getString(R.string.size_text_format) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Initialisera ImageViews och TextViews
+        // Initialize ImageViews and TextViews
         whiskyImage = findViewById(R.id.whiskyImage)
         artistImage = findViewById(R.id.artistImage)
-        priceText = findViewById(R.id.priceText)
-        infoText = findViewById(R.id.infoText)
+        selectedWhiskyTextView = findViewById(R.id.selectedWhiskyTextView)
+        selectedSizeTextView = findViewById(R.id.selectedSizeTextView)
 
-        // Initialisera Spinners
-        whiskySpinner = findViewById(R.id.whiskySpinner)
-        artistSpinner = findViewById(R.id.artistSpinner)
-        sizeSpinner = findViewById(R.id.sizeSpinner)
+        // Initialize Spinners
+        initSpinners()
+    }
 
-        val whiskyAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, whiskies)
-        whiskyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        whiskySpinner.adapter = whiskyAdapter
+    private var selectedWhiskyPricePerCl: Int = 0
 
-        val artistAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, artists)
-        artistAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        artistSpinner.adapter = artistAdapter
+    private fun initSpinners() {
 
-        val sizeAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, sizes)
-        sizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        sizeSpinner.adapter = sizeAdapter
+        // Explicitly specify the adapter to use String as its data type
+        whiskySpinner = findViewById<Spinner>(R.id.whiskySpinner).apply {
+            adapter = ArrayAdapter<String>(this@MainActivity, android.R.layout.simple_spinner_item, whiskies).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            }
+            onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                    val selectedWhisky = whiskies[position]
+                    selectedWhiskyPricePerCl = pricesPerCl[position]
+                    selectedWhiskyTextView.text = if (position > 0) {
+                        "$selectedWhisky - Price: $selectedWhiskyPricePerCl kr/cl"
+                    } else {
+                        getString(R.string.select_whisky_prompt)
+                    }
+                    updateWhiskyImage(selectedWhisky)
+                    // Update the total sum TextView if a size is already selected
+                    if (sizeSpinner.selectedItemPosition > 0) {
+                        selectedSizeTextView.text = "Your choice is ${sizes[sizeSpinner.selectedItemPosition]}\n" +
+                                "Total sum is ${sizes[sizeSpinner.selectedItemPosition].filter { it.isDigit() }.toInt() * selectedWhiskyPricePerCl} kr"
+                    }
+                }
 
-        whiskySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                selectedWhisky = whiskies[position]
-                updateInfo()
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                    selectedWhiskyTextView.text = getString(R.string.select_whisky_prompt)
+                }
             }
         }
 
-        artistSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        // Size Spinner
+        sizeSpinner = findViewById<Spinner>(R.id.sizeSpinner).apply {
+            adapter = ArrayAdapter<String>(this@MainActivity, android.R.layout.simple_spinner_item, sizes).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            }
+            onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                    val sizeSelection = sizes[position]
+                    selectedSizeTextView.text = if (position > 0) {
+                        val sizeInCl = sizeSelection.filter { it.isDigit() }.toInt() // Extracts numeric value
+                        val totalPrice = sizeInCl * selectedWhiskyPricePerCl
+                        "Your choice is $sizeInCl cl\nTotal sum is $totalPrice kr"
+                    } else {
+                        ""
+                    }
+                }
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                selectedArtist = artists[position]
-                updateInfo()
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    selectedSizeTextView.text = ""
+                }
             }
         }
 
-        sizeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        // Artist Spinner
+        artistSpinner = findViewById<Spinner>(R.id.artistSpinner).apply {
+            adapter = ArrayAdapter<String>(this@MainActivity, android.R.layout.simple_spinner_item, artists).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            }
+            onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                    val selectedArtist = artists[position]
+                    updateArtistImage(selectedArtist)
+                }
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                selectedSize = sizes[position]
-                updateInfo()
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // Logic for no selection, if needed
+                }
             }
         }
     }
 
-    private fun updateInfo() {
-        // Assuming you only want to update the infoText with the whisky, artist, and size
-        // without the price included in it.
-        infoText.text = getString(R.string.info_text_format, selectedWhisky, selectedArtist, selectedSize)
-
-        // Update the images for the selected whisky and artist
-        val whiskyResId = getWhiskyImageResource(selectedWhisky)
+    private fun updateWhiskyImage(whiskyName: String) {
+        val whiskyResId = getDrawableResourceByName(whiskyName)
         whiskyImage.setImageResource(whiskyResId)
+    }
 
-        val artistResId = getArtistImageResource(selectedArtist)
+    private fun updateArtistImage(artistName: String) {
+        val artistResId = getDrawableResourceByName(artistName)
         artistImage.setImageResource(artistResId)
-
-        // Update price text
-        val whiskyIndex = whiskies.indexOf(selectedWhisky).takeIf { it > 0 } ?: return
-        val sizeIndex = sizes.indexOf(selectedSize).takeIf { it > 0 } ?: return
-
-        val pricePerCl = pricesPerCl[whiskyIndex]
-        val sizeInCl = sizes[sizeIndex].filter { it.isDigit() }.toIntOrNull() ?: return
-        val totalPrice = pricePerCl * sizeInCl
-        priceText.text = getString(R.string.size_text_format, selectedSize, totalPrice.toFloat())
     }
 
-    private fun getWhiskyImageResource(whiskyName: String): Int {
-        // Antag att du har en funktion som mappar whiskyName till en drawable-resurs.
-        // Implementera den här logiken baserat på ditt specifika namngivningsschema.
-        return resources.getIdentifier(whiskyName.lowercase().replace(" ", "_"), "drawable",
-        packageName)
-    }
-
-    private fun getArtistImageResource(artistName: String): Int {
-        // Samma som ovan, mappa artistName till en drawable-resurs.
-        return resources.getIdentifier(artistName.lowercase().replace(" ", "_"), "drawable",
-            packageName)
+    private fun getDrawableResourceByName(name: String): Int {
+        val resourceName = name.lowercase().replace(" ", "_").replace("'", "")
+        return resources.getIdentifier(resourceName, "drawable", packageName)
     }
 }

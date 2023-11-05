@@ -4,7 +4,7 @@
     <string name="title_activity_main">Favorite Whisky</string>
     <string name="info_text_format">Your choice: Whisky - %1$s, Artist - %2$s, Size - %3$s</string>
     <string name="size_text_format">Your choice is %1$s\nTotal sum is %2$.2f kr</string>
-    <string name="printText">Please choose your favourite whisky.</string>
+    <string name="select_whisky_prompt">Please choose your favourite whisky.</string>
     <string-array name="whiskies">
         <item >Select whisky</item>
         <item >Lagavulin</item>
