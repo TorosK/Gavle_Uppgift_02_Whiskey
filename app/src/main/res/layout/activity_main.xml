@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Whisky Spinner at the top -->
+    <!-- Spinner for selecting a whisky -->
+    <!-- It is constrained to the top of the parent and stretches horizontally to fill the parent -->
     <Spinner
         android:id="@+id/whiskySpinner"
         android:layout_width="0dp"
@@ -14,7 +15,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- TextView for selected whisky and price -->
+    <!-- TextView to display the selected whisky and its price -->
+    <!-- Positioned below the whisky spinner -->
     <TextView
         android:id="@+id/selectedWhiskyTextView"
         android:layout_width="wrap_content"
@@ -24,7 +26,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Size Spinner below the Whisky TextView -->
+    <!-- Spinner for selecting the size of the whisky -->
+    <!-- Placed below the TextView that shows the selected whisky -->
     <Spinner
         android:id="@+id/sizeSpinner"
         android:layout_width="0dp"
@@ -33,7 +36,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- TextView for selected size and total sum -->
+    <!-- TextView to display the selected size and the total price -->
+    <!-- Positioned below the size spinner -->
     <TextView
         android:id="@+id/selectedSizeTextView"
         android:layout_width="wrap_content"
@@ -42,7 +46,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Artist Spinner below Size Spinner -->
+    <!-- Spinner for selecting an artist -->
+    <!-- Located below the TextView that shows the selected size and total price -->
     <Spinner
         android:id="@+id/artistSpinner"
         android:layout_width="0dp"
@@ -51,7 +56,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Image of the Whisky occupying left half of the bottom -->
+    <!-- ImageView for the whisky -->
+    <!-- This occupies the left half of the bottom of the screen -->
+    <!-- Constrained to be half the width and height of its parent -->
     <ImageView
         android:id="@+id/whiskyImage"
         android:layout_width="0dp"
@@ -63,7 +70,9 @@
         app:layout_constraintEnd_toStartOf="@id/artistImage"
         android:src="@drawable/default_whisky_image" />
 
-    <!-- Image of the Artist occupying right half of the bottom -->
+    <!-- ImageView for the artist -->
+    <!-- Takes up the right half of the bottom of the screen -->
+    <!-- Sized similarly to the whisky ImageView -->
     <ImageView
         android:id="@+id/artistImage"
         android:layout_width="0dp"

@@ -1,25 +1,38 @@
 <resources>
+    <!-- The name of the application -->
     <string name="app_name">FavouriteWhisky</string>
+
+    <!-- Label for the settings menu -->
     <string name="menu_settings">Settings</string>
+
+    <!-- Title for the main activity screen -->
     <string name="title_activity_main">Favorite Whisky</string>
-    <string name="info_text_format">Your choice: Whisky - %1$s, Artist - %2$s, Size - %3$s</string>
+
+    <!-- Template string for displaying the selected size and total sum -->
+    <!-- %1$s is the placeholder for the size, and %2$.2f is the placeholder for the formatted total sum -->
     <string name="size_text_format">Your choice is %1$s\nTotal sum is %2$.2f kr</string>
+
+    <!-- Prompt text for the user to select their favourite whisky -->
     <string name="select_whisky_prompt">Please choose your favourite whisky.</string>
+
+    <!-- Array of whisky names for the user to choose from -->
     <string-array name="whiskies">
-        <item >Select whisky</item>
-        <item >Lagavulin</item>
-        <item >Oban</item>
-        <item >Talisker</item>
-        <item >Ardbeg</item>
-        <item >Glenlivet</item>
-        <item >Bunnahabhain</item>
-        <item >Laphroaig</item>
-        <item >Caol Ila 18</item>
-        <item >Auchentoshan</item>
+        <item >Select whisky</item>   <!-- Prompt for selection -->
+        <item >Lagavulin</item>       <!-- Whisky option -->
+        <item >Oban</item>            <!-- Whisky option -->
+        <item >Talisker</item>        <!-- Whisky option -->
+        <item >Ardbeg</item>          <!-- Whisky option -->
+        <item >Glenlivet</item>       <!-- Whisky option -->
+        <item >Bunnahabhain</item>    <!-- Whisky option -->
+        <item >Laphroaig</item>       <!-- Whisky option -->
+        <item >Caol Ila 18</item>     <!-- Whisky option -->
+        <item >Auchentoshan</item>    <!-- Whisky option -->
     </string-array>
-    <!-- Price per cl for each whisky -->
+
+    <!-- Array of prices per centiliter (cl) corresponding to each whisky -->
+    <!-- These are used to calculate the total cost based on the whisky and size selected -->
     <integer-array name="prices">
-        <item>0</item>    <!-- Placeholder for "Select whisky" -->
+        <item>0</item>    <!-- Placeholder for "Select whisky", no cost -->
         <item>125</item>  <!-- Price per cl for Lagavulin -->
         <item>37</item>   <!-- Price per cl for Oban -->
         <item>112</item>  <!-- Price per cl for Talisker -->
@@ -30,16 +43,20 @@
         <item>137</item>  <!-- Price per cl for Caol Ila 18 -->
         <item>82</item>   <!-- Price per cl for Auchentoshan -->
     </integer-array>
+
+    <!-- Array of possible whisky sizes in centiliters (cl) for the user to choose -->
     <string-array name="sizes">
-        <item >Select cl</item>
-        <item >4 cl</item>
-        <item >6 cl</item>
-        <item >8 cl</item>
+        <item >Select cl</item>  <!-- Prompt for selection -->
+        <item >4 cl</item>       <!-- Size option -->
+        <item >6 cl</item>       <!-- Size option -->
+        <item >8 cl</item>       <!-- Size option -->
     </string-array>
+
+    <!-- Array of artist names for the user to choose their favorite -->
     <string-array name="artists">
-        <item >Choose your favorite artist</item>
-        <item >MachineDrum</item>
-        <item >Aphex Twin</item>
-        <item >Boards of Canada</item>
+        <item >Choose your favorite artist</item>  <!-- Prompt for selection -->
+        <item >MachineDrum</item>                   <!-- Artist option -->
+        <item >Aphex Twin</item>                    <!-- Artist option -->
+        <item >Boards of Canada</item>              <!-- Artist option -->
     </string-array>
 </resources>
