@@ -90,34 +90,26 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // UpdateInfo-funktionen definieras här för att tillåta åtkomst till ImageView och TextView.
     private fun updateInfo() {
-        // Uppdaterar infoText med vald whisky, konstnär och storlek
+        // Assuming you only want to update the infoText with the whisky, artist, and size
+        // without the price included in it.
         infoText.text = getString(R.string.info_text_format, selectedWhisky, selectedArtist, selectedSize)
 
-        // Uppdaterar bilden för den valda whiskyn
+        // Update the images for the selected whisky and artist
         val whiskyResId = getWhiskyImageResource(selectedWhisky)
         whiskyImage.setImageResource(whiskyResId)
 
-        // Uppdaterar bilden för den valda konstnären
         val artistResId = getArtistImageResource(selectedArtist)
         artistImage.setImageResource(artistResId)
 
-        // Uppdaterar priset för den valda whiskyn
-        // Find index of selected whisky
-        val whiskyIndex = whiskies.indexOf(selectedWhisky).takeIf { it >= 0 } // Include the first item
-        val sizeIndex = sizes.indexOf(selectedSize).takeIf { it >= 0 } // Include the first item
+        // Update price text
+        val whiskyIndex = whiskies.indexOf(selectedWhisky).takeIf { it > 0 } ?: return
+        val sizeIndex = sizes.indexOf(selectedSize).takeIf { it > 0 } ?: return
 
-        // Update price text only if a whisky and a size are selected and not placeholders
-        if (whiskyIndex != null && sizeIndex != null && selectedWhisky.isNotEmpty() && selectedSize.isNotEmpty()) {
-            val pricePerCl = pricesPerCl[whiskyIndex]
-            val sizeInCl = sizes[sizeIndex].filter { it.isDigit() }.toIntOrNull() ?: 0 // Safely convert to Int
-            val totalPrice = pricePerCl * sizeInCl
-            priceText.text = priceTextFormat.format(totalPrice.toFloat())
-
-            // Update size and total price text
-            infoText.text = sizeTextFormat.format(selectedSize, totalPrice.toFloat())
-        }
+        val pricePerCl = pricesPerCl[whiskyIndex]
+        val sizeInCl = sizes[sizeIndex].filter { it.isDigit() }.toIntOrNull() ?: return
+        val totalPrice = pricePerCl * sizeInCl
+        priceText.text = getString(R.string.size_text_format, selectedSize, totalPrice.toFloat())
     }
 
     private fun getWhiskyImageResource(whiskyName: String): Int {

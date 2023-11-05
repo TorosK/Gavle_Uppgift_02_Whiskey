@@ -14,13 +14,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-
     <!-- Size Spinner below Whiskey Spinner -->
     <Spinner
         android:id="@+id/sizeSpinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/artistSpinner"
+        app:layout_constraintTop_toBottomOf="@id/whiskySpinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -29,7 +28,7 @@
         android:id="@+id/artistSpinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/whiskySpinner"
+        app:layout_constraintTop_toBottomOf="@id/sizeSpinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

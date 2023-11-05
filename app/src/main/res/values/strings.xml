@@ -2,7 +2,7 @@
     <string name="app_name">FavouriteWhisky</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">Favorite Whisky</string>
-    <string name="info_text_format">Your choice is %1$s. Price = %2$.2f kr/cl</string>
+    <string name="info_text_format">Your choice: Whisky - %1$s, Artist - %2$s, Size - %3$s</string>
     <string name="size_text_format">Your choice is %1$s\nTotal sum is %2$.2f kr</string>
     <string name="printText">Please choose your favourite whisky.</string>
     <string-array name="whiskies">
@@ -30,16 +30,16 @@
         <item>137</item>  <!-- Price per cl for Caol Ila 18 -->
         <item>82</item>   <!-- Price per cl for Auchentoshan -->
     </integer-array>
-    <string-array name="artists">
-        <item >Select artist</item>
-        <item >MachineDrum</item>
-        <item >Aphex Twin</item>
-        <item >Boards of Canada</item>
-    </string-array>
     <string-array name="sizes">
-        <item >Select size</item>
+        <item >Select cl</item>
         <item >4 cl</item>
         <item >6 cl</item>
         <item >8 cl</item>
+    </string-array>
+    <string-array name="artists">
+        <item >Choose your favorite artist</item>
+        <item >MachineDrum</item>
+        <item >Aphex Twin</item>
+        <item >Boards of Canada</item>
     </string-array>
 </resources>
